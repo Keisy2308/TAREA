@@ -1,0 +1,216 @@
+<html>
+<head>
+<style>
+table{
+  background-color:#C1FAFA;
+  background-attachment: fixed;
+  margin-left:40px;
+  margin-right: 40px;
+  margin top: 0px;
+
+}
+
+H1{
+  font-family: verdana;
+  background-color: black;
+  color: white;
+}
+h4{
+  font-family: verdana;
+}
+h5{
+  color: red;
+  font-family: verdana;
+  margin-top: inherit;
+
+}
+.todo{
+  border-collapse: collapse;
+  BORDER: BLACK 9PX SOLID;
+}
+
+.lico{
+  float: left;
+  position: static;
+
+
+}
+img{
+  width: 190px;
+  height:250px;
+  margin-top: 20px;
+  margin-left: 345px;
+  margin-right: 30px;
+  align-items: flex-start;
+  position:fixed;
+
+ }
+
+.recargo{
+  color: red;
+}
+
+
+</style>
+
+</head>
+<script>
+    function calculo()
+    {
+      var dscto1,dscto2,dsctototal,precio,recargo1,Importe,Igv,Total;
+      var dscto1=0;
+      var dscto2=0;
+      var recargo1=0;
+
+      var bebida=document.getElementById("prod").value;
+      var Antiguo=document.getElementById("anti");
+      var Nuevo=document.getElementById("nue");
+
+      var recargo=document.getElementById("check");
+      var Contado=document.getElementById("cont");
+      var Partes=document.getElementById("part");
+
+
+if(bebida=="1")
+{
+precio=20;
+}
+
+if(bebida=="2")
+{
+precio=30;
+}
+
+if(bebida=="3")
+{
+precio=15;
+}
+
+if(bebida=="4")
+{
+precio=18;
+}
+
+if(bebida=="")
+{
+precio=0;
+}
+
+if(Antiguo.checked)
+{
+dscto1=5.00;
+}
+
+if(Nuevo.checked)
+{
+dscto2=3.00;
+}
+
+if(Contado.checked)
+{
+dscto2=15*precio/100;
+}
+
+if(Partes.checked)
+{
+dscto2=5*precio/100;
+}
+
+if(recargo.checked){
+recargo1=10.00;
+}
+
+
+
+
+dsctototal=dscto2+dscto1;
+
+
+
+Importe=precio+recargo1-dsctototal;
+Igv=Importe*0.18;
+Total=Importe+Igv;
+
+document.getElementById("CBasico").value=precio;
+document.getElementById("Descto").value=dscto1+dscto2;
+document.getElementById("Recargo").value=recargo1;
+document.getElementById("Importe").value=Importe;
+document.getElementById("IGV").value=Igv;
+document.getElementById("Total").value=Total;
+
+
+    }﻿</script>
+<body>
+
+<form method="post" action="">
+<table  class="todo"  align='center' >
+  <td>
+<h1 align:center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LICORERIA LA MUERTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+
+<tr><td><img src="imagenes/whisky.jpg">
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Informe de Nuestros Productos:</h3>
+
+  <form class="licor" clear:left>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="prod" onclick="calculo()"    name="prod" size="width:200px">
+      <option value="1">Ron</option>
+      <option value="2">Vino</option>
+      <option value="3">Whisky&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+      <option value="4">Trago</option>
+    </select>
+    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Los precios no incluyen IGV</h5>
+  </form>
+  <table class="situacio">
+        <tbody><tr>
+            <td colspan="2">
+                <fieldset>
+				<legend>Situacion </legend>
+                <table class="tablauno">
+                <tbody><tr>
+                 <td rowspan="7" style="width:140px">
+                 </td>
+                 <tr>
+                   <form>
+                 <input   onclick="calculo()" type="radio" id="nue" name="situ" value="1">Nuevo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="calculo()" type="radio" id="anti" name="situ" value="2">Antiguo <br>
+               </form>
+                 <tr>
+            </td>
+        </tr>
+        </tbody></table>
+      </fieldset>
+    <form>
+    <br><input type="checkbox"  onclick="calculo" id="check" name="chek" value="1"> Recargo <h5>(unicamente a provincia)</h5>
+
+  </form>
+
+    <fieldset>
+              <legend>Forma de Pago</legend>
+
+                      <table class="TableBig">
+                      <tbody><tr>
+                       <td rowspan="7" style="width:140px">
+                       </td>
+                       <tr>
+                        <form>
+                       <input onclick="calculo()" type="radio" id="cont" name="pago" value="1">Contado &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="calculo()" type="radio"id="part" name="pago" value="2">Partes <br>
+                     </form>
+                       <tr>
+
+                  </td>
+              </tr>
+              </tbody></table>
+            </fieldset>
+            <br>
+
+<tr>
+            <td>Costo Basico&nbsp;&nbsp;:<td><input type="text" oninput="calculo()"   id="CBasico"  size =8> &nbsp;&nbsp;&nbsp;<Td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Importe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<td><input id="Importe" type="input" name="Inporte" size =8 >
+            <tr>
+            <td>Descuento&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<td><input type="input" id="Descto"  name="Descuento" size =8 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IGV(18%)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<td><input id="IGV"  type="input" size =8 >
+            <tr>
+            <td class="recargo" >Recargo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<td><input id="Recargo" type="input" name="Recargo" size =8> &nbsp;&nbsp;&nbsp;<Td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total a pagar :  <td><input  id="Total" type="text" name="Total" size =8>
+            <tr>
+              <tr>
+              </td>
+</tr>
+</table>
+</body>
+</html>
